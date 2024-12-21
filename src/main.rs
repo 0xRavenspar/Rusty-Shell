@@ -1,7 +1,16 @@
+use std::process::Child;
+use std::process::Command;
+use std::process::Stdio;
+use std::env;
+use std::path::Path;
+use std::io::Write;
+use std::io::stdin;
+use std::io::stdout;
+
 fn main(){
     loop {
         print!("> ");
-        stdout().flush();
+         let _ = stdout().flush();
 
         let mut input = String::new();
         stdin().read_line(&mut input).unwrap();
@@ -64,7 +73,7 @@ fn main(){
 
         if let Some(mut final_command) = previous_command {
             // block until the final command has finished
-            final_command.wait();
+            let  _ = final_command.wait();
         }
 
     }
